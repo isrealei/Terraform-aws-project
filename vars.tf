@@ -34,7 +34,7 @@ variable "rmqpass" {
   default = "76932072issR$"
 }
 
-variable "dbpass" {
+variable "dbuser" {
   default = "admin"
 }
 
@@ -42,7 +42,7 @@ variable "dbpass" {
   default = "76932072issR$"
 }
 
-variable "dbuser" {
+variable "dbname" {
   default = "account"
 }
 
