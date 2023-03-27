@@ -62,7 +62,7 @@ resource "aws_security_group" "delight-prod-sg" {
   }
 
   tags = {
-    Name = "allow_tls"
+    Name = "delight-prod-sg"
   }
 }
 
@@ -87,7 +87,7 @@ resource "aws_security_group" "delight-backend-sg" {
   }
 
   tags = {
-    Name = "allow_tls"
+    Name = "delight-backend-sg"
   }
 }
 
