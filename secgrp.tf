@@ -79,6 +79,14 @@ resource "aws_security_group" "delight-backend-sg" {
     security_groups = [aws_security_group.delight-prod-sg.id]
   }
 
+  ingress {
+    from_port       = 3306
+    protocol        = "tcp"
+    to_port         = 3306
+    security_groups = [aws_security_group.bastion-host-sg.id]
+  }
+
+
   egress {
     from_port   = 0
     to_port     = 0
