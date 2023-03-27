@@ -1,22 +1,22 @@
 resource "aws_security_group" "delight-bean-elb-sg" {
-  name = "delight-bean-elb-sg"
+  name        = "delight-bean-elb-sg"
   description = "Security group for elastic beanstalk loadbalance"
-  vpc_id = module.vpc.vpc_id
+  vpc_id      = module.vpc.vpc_id
 
-ingress {
-  cidr_blocks = [ "0.0.0.0/0" ]
-  description = "Allow port 80 from all IPs"
-  from_port = 80
-  protocol = "tcp"
-  to_port = 80
-} 
+  ingress {
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow port 80 from all IPs"
+    from_port   = 80
+    protocol    = "tcp"
+    to_port     = 80
+  }
 
-egress {
-    cidr_blocks = [ "0.0.0.0/0" ]
-  from_port = 0
-  protocol = "-1"
-  to_port = 0
-}
+  egress {
+    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = 0
+    protocol    = "-1"
+    to_port     = 0
+  }
 
 }
 
@@ -25,20 +25,20 @@ resource "aws_security_group" "bastion-host-sg" {
   description = "Security group for the jump-server/bastion host"
   vpc_id      = module.vpc.vpc_id
 
-ingress {
-  cidr_blocks = [ var.MYIP ]
-  description = "Allow port 22 from all IPs"
-  from_port = 22
-  protocol = "tcp"
-  to_port = 22
-} 
+  ingress {
+    cidr_blocks = [var.MYIP]
+    description = "Allow port 22 from all IPs"
+    from_port   = 22
+    protocol    = "tcp"
+    to_port     = 22
+  }
 
-egress {
-    cidr_blocks = [ "0.0.0.0/0" ]
-  from_port = 0
-  protocol = "-1"
-  to_port = 0
-}
+  egress {
+    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = 0
+    protocol    = "-1"
+    to_port     = 0
+  }
 }
 
 resource "aws_security_group" "delight-prod-sg" {
@@ -47,10 +47,10 @@ resource "aws_security_group" "delight-prod-sg" {
   vpc_id      = module.vpc.vpc_id
 
   ingress {
-    description = "TLS from VPC"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
+    description     = "TLS from VPC"
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
     security_groups = [aws_security_group.bastion-host-sg.id]
   }
 
@@ -72,10 +72,10 @@ resource "aws_security_group" "delight-backend-sg" {
   vpc_id      = module.vpc.vpc_id
 
   ingress {
-    description = "TLS from VPC"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
+    description     = "TLS from VPC"
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
     security_groups = [aws_security_group.delight-prod-sg.id]
   }
 
