@@ -39,7 +39,7 @@ variable "dbuser" {
 }
 
 variable "dbpass" {
-  default = "76932072issR$"
+  default = "admin123"
 }
 
 variable "dbname" {
