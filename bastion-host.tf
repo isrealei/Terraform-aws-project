@@ -19,7 +19,7 @@ resource "aws_instance" "delight-bastion-host" {
 
   provisioner "remote-exec" {
     inline = [
-      "chmod 755 /tmp/delight-dbdeploy.sh",
+      "chmod +x /tmp/delight-dbdeploy.sh",
       "sudo /tmp/delight-dbdeploy.sh"
     ]
   }
