@@ -14,6 +14,9 @@ The following stacks were provsisoned with Terraform:
 - RabbitMQ
 - ElastiCache
 - Load balancer 
+- key Pairs
+- Security Groups
+- Nat gateway
 
 
 # The problem
