@@ -11,6 +11,7 @@ The following stacks were provsisoned with Terraform:
 - VPC: 6 subnets, 3 private subnets, 3 public subntes.
 - Bastion Hosts: To access backend services on the private subnets
 - Elastic Beanstalk
+- RDS
 - RabbitMQ
 - ElastiCache
 - Load balancer 
